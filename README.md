@@ -12,11 +12,16 @@ Sentiment-Analysis/
 ├── data/                  # Sample test and training CSV files
 │   ├── sample_test.csv
 │   └── training_data.csv
+|   |__ __init__.py
 │
 ├── model/                 # ML model training and testing logic
 │   ├── train.py
 │   ├── test.py
-│   └── utils.py
+|   |__ __init__.py
+│
+|__ utils/
+|   |__ preprocess.py
+|   |__ __init__.py
 │              
 │── model.pkl          # Trained Naive Bayes model
 │
