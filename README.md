@@ -11,7 +11,8 @@ Sentiment-Analysis/
 │
 ├── data/                  # Sample test and training CSV files
 │   ├── sample_test.csv
-│   └── training_data.csv
+│   └── sample_train.csv
+|   |__ sample_train_large.csv
 │
 ├── model/                 # ML model training and testing logic
 │   ├── train.py
