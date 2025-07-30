@@ -17,10 +17,8 @@ Sentiment-Analysis/
 │   ├── train.py
 │   ├── test.py
 │   └── utils.py
-│
-├── model/                
-│   ├── model.pkl          # Trained Naive Bayes model
-│   └── vectorizer.pkl     # Saved TF-IDF Vectorizer
+│              
+│── model.pkl          # Trained Naive Bayes model
 │
 ├── main.py                # Main user interface script
 ├── requirements.txt       # Python dependencies
@@ -31,7 +29,7 @@ Sentiment-Analysis/
 
 ## 🚀 Features
 
-- Text preprocessing using `TfidfVectorizer`
+- Text preprocessing using `CountVectorizer`
 - Balanced class resampling (for imbalanced datasets)
 - Modular and readable code
 - Training & evaluation separated cleanly
