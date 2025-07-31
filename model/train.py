@@ -2,13 +2,12 @@ import os
 import pandas as pd
 import joblib
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import classification_report
 from utils.preprocess import preprocess_data
 
 MODEL_PATH = "model.pkl"
 VECTORIZER_PATH = "vectorizer.pkl"
-
 
 def train_model():
     path = input("Path to training CSV: ").strip()
@@ -23,11 +22,11 @@ def train_model():
         x, y, test_size=0.3, random_state=42, stratify=y
     )
 
-    model = LogisticRegression(max_iter=1000)
+    model = MultinomialNB()
     model.fit(x_train, y_train)
 
-    joblib.dump(model, MODEL_PATH)
-    joblib.dump(vectorizer, VECTORIZER_PATH)
+    joblib.dump(model, MODEL_PATH, compress=3)
+    joblib.dump(vectorizer, VECTORIZER_PATH, compress=3)
     print("\n✅ Model and vectorizer saved.")
 
     y_pred = model.predict(x_test)

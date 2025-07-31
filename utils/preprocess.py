@@ -15,7 +15,7 @@ def preprocess_test_data(df, vectorizer):
 def preprocess_data(df, vectorizer=None):
     df["review"] = df["review"].apply(clean_text)
     if vectorizer is None:
-        vectorizer = TfidfVectorizer(stop_words="english", ngram_range=(1, 2))
+        vectorizer = TfidfVectorizer(stop_words="english", ngram_range=(1, 2),max_features=5000)
         x = vectorizer.fit_transform(df["review"])
     else:
         x = vectorizer.transform(df["review"])
