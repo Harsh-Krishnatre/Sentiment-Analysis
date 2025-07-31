@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from utils.preprocess import clean_text
+import re
 import joblib
 import os
 
@@ -8,6 +8,10 @@ app = Flask(__name__)
 model = joblib.load("model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
 
+def clean_text(text):
+    text = text.lower()
+    text = re.sub(r"[^a-z\s]", "", text)
+    return text
 
 @app.route("/", methods=["GET", "POST"])
 def index():
