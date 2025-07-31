@@ -1,14 +1,15 @@
 import os
 import pandas as pd
 import joblib
-from utils.preprocess import preprocess_test_data
+from utils.preprocess import preprocess_test_data,stringify
 from sklearn.metrics import classification_report
 
 MODEL_PATH = "model.pkl"
+VECTORIZER_PATH = "vectorizer.pkl"
 
 def test_model():
-    if not os.path.exists(MODEL_PATH):
-        print("No model found. Train the model first.")
+    if not os.path.exists(MODEL_PATH) or not os.path.exists(VECTORIZER_PATH):
+        print("Model/vectorizer not found. Train the model first.")
         return
 
     path = input("Path to test CSV: ").strip()
@@ -17,10 +18,15 @@ def test_model():
         return
 
     df = pd.read_csv(path).dropna()
-    model = joblib.load(MODEL_PATH)
 
-    x_test, y_test = preprocess_test_data(df)
+    model = joblib.load(MODEL_PATH)
+    vectorizer = joblib.load(VECTORIZER_PATH)
+
+    x_test, y_test = preprocess_test_data(df, vectorizer)
     y_pred = model.predict(x_test)
+
+    y_pred = list(map(stringify, y_pred))
+    y_test = list(map(stringify, y_test))
 
     print("\n=== Test Report ===")
     print(classification_report(y_test, y_pred))
