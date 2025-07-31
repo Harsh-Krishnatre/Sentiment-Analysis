@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import joblib
-from utils.preprocess import preprocess_test_data,stringify
+from utils.preprocess import preprocess_test_data
 from sklearn.metrics import classification_report
 
 MODEL_PATH = "model.pkl"
@@ -25,11 +25,8 @@ def test_model():
     x_test, y_test = preprocess_test_data(df, vectorizer)
     y_pred = model.predict(x_test)
 
-    y_pred = list(map(stringify, y_pred))
-    y_test = list(map(stringify, y_test))
-
     print("\n=== Test Report ===")
-    print(classification_report(y_test, y_pred))
+    print(classification_report(y_test, y_pred, zero_division=0))
 
     df["Predicted"] = y_pred
     print("\n=== Sample Predictions ===")

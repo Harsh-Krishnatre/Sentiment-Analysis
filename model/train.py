@@ -34,6 +34,6 @@ def train_model():
 
     y_pred = model.predict(x_test)
     print("\n=== Training Report ===")
-    print(classification_report(y_test, y_pred))
+    print(classification_report(y_test, y_pred, zero_division=0))
 
 

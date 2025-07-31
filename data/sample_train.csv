@@ -1,4 +1,4 @@
-Year,Month,Day,Time of Tweet,text,label,Platform
+Year,Month,Day,Time of Tweet,review,sentiment,Platform
 2018,8,18,morning,What a great day!!! Looks like dream.,positive, Twitter  
 2018,8,18,noon,"I feel sorry, I miss you here in the sea beach",positive, Facebook 
 2017,8,18,night,Don't angry me,negative,Facebook
