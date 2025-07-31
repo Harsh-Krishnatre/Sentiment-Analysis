@@ -1,30 +1,27 @@
-import sys, os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from flask import Flask, request, render_template
+from flask import Flask, render_template, request
+from utils.preprocess import clean_text
 import joblib
-from utils.preprocess import stringify
-import pandas as pd
+import os
 
 app = Flask(__name__)
 
-# Load model and vectorizer
 model = joblib.load("model.pkl")
 vectorizer = joblib.load("vectorizer.pkl")
+
 
 @app.route("/", methods=["GET", "POST"])
 def index():
     prediction = None
+    review = ""
     if request.method == "POST":
-        user_input = request.form["review"]
-        if user_input.strip():
-            # Convert input to DataFrame for compatibility
-            df = pd.DataFrame({"text": [user_input]})
-            x = vectorizer.transform(df["text"])
+        review = request.form.get("review", "")
+        if review.strip():
+            cleaned_review = clean_text(review)
+            x = vectorizer.transform([cleaned_review])
             y_pred = model.predict(x)[0]
-            prediction = stringify(y_pred)
-    return render_template("index.html", prediction=prediction)
+            prediction = y_pred
+    return render_template("index.html", prediction=prediction, review=review)
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
+    port = int(os.environ.get("PORT", 5000))  # default to 5000 for local dev
     app.run(host="0.0.0.0", port=port)

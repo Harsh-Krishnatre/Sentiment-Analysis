@@ -1,20 +1,22 @@
 import os
 import pandas as pd
 import joblib
-from utils.preprocess import preprocess_test_data
 from sklearn.metrics import classification_report
+from utils.preprocess import preprocess_test_data
 
 MODEL_PATH = "model.pkl"
 VECTORIZER_PATH = "vectorizer.pkl"
 
+
+
 def test_model():
     if not os.path.exists(MODEL_PATH) or not os.path.exists(VECTORIZER_PATH):
-        print("Model/vectorizer not found. Train the model first.")
+        print("❌ Model/vectorizer not found. Train the model first.")
         return
 
     path = input("Path to test CSV: ").strip()
     if not os.path.exists(path):
-        print("File not found.")
+        print("❌ File not found.")
         return
 
     df = pd.read_csv(path).dropna()
@@ -30,4 +32,4 @@ def test_model():
 
     df["Predicted"] = y_pred
     print("\n=== Sample Predictions ===")
-    print(df.head(10))
+    print(df.head(20))
