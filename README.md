@@ -22,6 +22,12 @@ Sentiment-Analysis/
 |__ utils/
 |   |__ preprocess.py
 |   |__ __init__.py
+│
+│__ frontend/
+│   │__ templates/
+│   │    │__ index.html
+│   │__ app.py
+│
 │              
 │── model.pkl          # Trained Naive Bayes model
 │
@@ -34,7 +40,7 @@ Sentiment-Analysis/
 
 ## 🚀 Features
 
-- Text preprocessing using `CountVectorizer`
+- Text preprocessing using `TFidVectorizer`
 - Balanced class resampling (for imbalanced datasets)
 - Modular and readable code
 - Training & evaluation separated cleanly
@@ -73,15 +79,14 @@ CSV file should have at least these columns:
 
 ```csv
 Serial No.,text,label
-1,"I loved the movie",1
-2,"It was boring",-1
-3,"The product is fine",0
+1,"I loved the movie",positive
+2,"It was boring",negative
+3,"The product is fine",positive
 ```
 
 Where:
 - `1` = Positive
-- `0` = Neutral
-- `-1` = Negative
+- `0` = Negative
 
 ---
 
