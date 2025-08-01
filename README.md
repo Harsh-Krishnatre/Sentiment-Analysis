@@ -30,6 +30,7 @@ Sentiment-Analysis/
 │
 │              
 │── model.pkl          # Trained Naive Bayes model
+│__ vectorizer.pkl
 │
 ├── main.py                # Main user interface script
 ├── requirements.txt       # Python dependencies
