@@ -42,7 +42,6 @@ Sentiment-Analysis/
 ## 🚀 Features
 
 - Text preprocessing using `TFidVectorizer`
-- Balanced class resampling (for imbalanced datasets)
 - Modular and readable code
 - Training & evaluation separated cleanly
 - User-friendly terminal interface
