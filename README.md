@@ -1,6 +1,6 @@
 # 🧠 Sentiment Analysis with Naive Bayes (Text Classification)
 
-This project is a simple yet modular implementation of a **Sentiment Analysis** system using the **Naive Bayes classifier**. It takes labeled text data and predicts whether the sentiment is **positive (1)**, **neutral (0)**, or **negative (-1)**.
+This project is a simple yet modular implementation of a **Sentiment Analysis** system using the **Naive Bayes classifier**. It takes labeled text data and predicts whether the sentiment is **positive (1)**, or **negative (0)**.
 
 ---
 
